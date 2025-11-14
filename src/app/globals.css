@@ -1,12 +1,50 @@
 @import "tailwindcss";
 
+/* Tailwind CSS v4 커스텀 설정 */
+@theme {
+  /* 반응형 브레이크포인트 설정 */
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* 다크모드 컬러 설정 */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-secondary: #64748b;
+  --color-secondary-dark: #475569;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+}
+
+/* 라이트 모드 (기본) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* 다크 모드 - class 기반 */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* 시스템 설정 기반 다크모드 (폴백) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
@@ -36,8 +74,13 @@ a {
   text-decoration: none;
 }
 
+/* 다크 모드 적용 시 color-scheme 설정 */
+.dark {
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  html {
+  html:not(.light) {
     color-scheme: dark;
   }
 }
